@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Estaturas estaturas = new Estaturas(25);
+        estaturas.ingresarEstaturas();
+        double estaturaMaxima = estaturas.obtenerEstaturaMaxima();
+        double estaturaMinima = estaturas.obtenerEstaturaMinima();
+        
+        System.out.println("La estatura más alta es: " + estaturaMaxima);
+        System.out.println("La estatura más baja es: " + estaturaMinima);
+    }
+}
+
+
+public class Estaturas {
+    private double[] estaturas;
+    private int cantidadEstudiantes;
+
+    public Estaturas(int cantidad) {
+        estaturas = new double[cantidad];
+        cantidadEstudiantes = cantidad;
+    }
+
+    public void ingresarEstaturas() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese las estaturas de los " + cantidadEstudiantes + " estudiantes:");
+        for (int i = 0; i < cantidadEstudiantes; i++) {
+            System.out.print("Estatura del estudiante " + (i + 1) + ": ");
+            estaturas[i] = scanner.nextDouble();
+        }
+    }
+
+    public double obtenerEstaturaMaxima() {
+        double max = estaturas[0];
+        for (double estatura : estaturas) {
+            if (estatura > max) {
+                max = estatura;
+            }
+        }
+        return max;
+    }
+
+    public double obtenerEstaturaMinima() {
+        double min = estaturas[0];
+        for (double estatura : estaturas) {
+            if (estatura < min) {
+                min = estatura;
+            }
+        }
+        return min;
+    }
+}
